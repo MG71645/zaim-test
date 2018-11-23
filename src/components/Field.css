@@ -1,0 +1,61 @@
+.field {
+  position: relative;
+}
+
+.field__label {
+  width: 56px;
+  height: 16px;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  white-space: nowrap;
+  color: #666666;
+}
+
+.field__placeholder {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  box-sizing: content-box;
+  height: 24px;
+  padding: 4px 0 6px;
+  font-size: 20px;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #cccccc;
+}
+
+.field__input {
+  box-sizing: content-box;
+  height: 24px;
+  padding: 4px 0 6px;
+  border-bottom: .1px solid #ccc;
+  font-size: 20px;
+  font-weight: 300;
+  color: #000000;
+}
+
+.field-error .field__input {
+  border-color: #d0021b;
+}
+
+.field__error {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 16px;
+  font-size: 13px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  color: #d0021b;
+}
