@@ -39,12 +39,12 @@ class Field extends Component {
           break
         }
         case 'masked': {
-          if (this.state.value.includes(' ')) error = this.state.onError
+          if (this.state.value.split(' ').length > this.props.mask.split(' ').length) error = this.state.onError
           break
         }
-        case 'text': {
-          const allowed = /^[а-яё\s\-]/i
-          const required = /^([а-яё])/i
+        case 'cyrillic': {
+          const allowed = new RegExp('^[а-яёА-ЯЁ \-]+$')
+          const required = new RegExp('^[а-яёА-ЯЁ]')
           if (!allowed.test(this.state.value) || this.state.value.search(required) === -1) error = this.state.onError
           break
         }
@@ -79,6 +79,10 @@ class Field extends Component {
     if (nextState.edited && this.props.required && nextState.value === '') {
       nextState.error = this.state.onEmpty
     }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.onChange && (prevState.edited !== this.state.edited || !prevState.error !== !this.state.error)) this.props.onChange(this.props.name, !this.state.error)
   }
 
   render() {
