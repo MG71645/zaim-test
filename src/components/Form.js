@@ -188,7 +188,7 @@ class Form extends React.Component {
                 на условиях и для целей, определенных в <span className="link">Согласии на обработку персональных данных</span>
               </span>
             </div>
-            <button className="form__button">Отправить</button>
+            <button type="button" className="form__button" disabled={!this.state.completed || !this.state.options.agree}>Отправить</button>
           </div>
         </div>
       </form>

@@ -82,7 +82,6 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  color: inherit;
 }
 
 option {
