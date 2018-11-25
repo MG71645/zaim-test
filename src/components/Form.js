@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 // Components
+import {Link} from 'react-router-dom'
 import Field from './Field'
 import Checkbox from './Checkbox'
 
@@ -61,6 +62,10 @@ class Form extends React.Component {
         increase: true
       }
     }))
+  }
+
+  send = () => {
+    this.props.history.push('/done')
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -188,7 +193,7 @@ class Form extends React.Component {
                 на условиях и для целей, определенных в <span className="link">Согласии на обработку персональных данных</span>
               </span>
             </div>
-            <button type="button" className="form__button" disabled={!this.state.completed || !this.state.options.agree}>Отправить</button>
+            <button type="button" onClick={this.send} className="form__button" disabled={!this.state.completed || !this.state.options.agree}>Отправить</button>
           </div>
         </div>
       </form>

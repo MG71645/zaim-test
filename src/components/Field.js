@@ -58,7 +58,6 @@ class Field extends Component {
   }
 
   handleFocus = () => {
-    console.log('focus')
     this.setState({focused: true})
   }
 

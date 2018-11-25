@@ -1,0 +1,10 @@
+.done {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  color: #005b6b;
+}
+
+.done__icon {
+  font-size: 48px;
+}
