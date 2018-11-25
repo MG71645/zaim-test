@@ -30,6 +30,10 @@ class Field extends Component {
           if (!validator.isEmail(this.state.value)) error = this.state.onError
           break
         }
+        case 'date': {
+          if (this.state.value < this.props.minDate || this.state.value > this.props.maxDate) error = this.state.onError
+          break
+        }
         case 'phone': {
           if (!isValidNumber(this.state.value)) error = this.state.onError
           break
@@ -50,10 +54,11 @@ class Field extends Component {
       error = this.state.onEmpty
     }
 
-    this.setState({error})
+    if (error) this.setState({error})
   }
 
   handleFocus = () => {
+    console.log('focus')
     this.setState({focused: true})
   }
 
@@ -65,14 +70,6 @@ class Field extends Component {
   handleChange = value => {
     this.setState({
       value,
-      edited: true,
-      error: ''
-    })
-  }
-
-  handlePhoneChange = event => {
-    this.setState({
-      value: event.target.value,
       edited: true,
       error: ''
     })
@@ -102,7 +99,7 @@ class Field extends Component {
           value={this.state.value}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          onChange={this.handlePhoneChange}/>
+          onChange={event => this.handleChange(event.target.value)}/>
         break
       }
       case 'date': {
@@ -151,9 +148,9 @@ class Field extends Component {
     return (
       <div className={className}>
         <div className="field__label">{this.props.label}</div>
-        {!this.state.value ?
+        {this.state.value || this.props.type === 'date' && this.state.focused ? null :
           <label className="field__placeholder">{this.props.placeholder}</label>
-        : null}
+        }
         {input}
         {this.state.error ?
           <div className="field__error">{this.state.error}</div>
