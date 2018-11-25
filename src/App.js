@@ -21,10 +21,12 @@ class App extends Component {
         <div className="App">
           <Header/>
           <div className="body">
-              <Switch>
-                <Route exact path="/done" component={Done}/>
-                <Route exact path="/" component={Form}/>
-              </Switch>
+            <div className="wrapper">
+                <Switch>
+                  <Route exact path="/done" component={Done}/>
+                  <Route exact path="/" component={Form}/>
+                </Switch>
+            </div>
           </div>
           <Footer/>
         </div>
